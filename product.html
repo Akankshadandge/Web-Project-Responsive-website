@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Products</title>
+    <!-- Bootstrap 4 CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #171717;
+            color:aliceblue;
+            
+        }
+        .product-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        .product-image {
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: black;
+        
+        }
+        .product-description {
+            font-size: 0.9rem;
+            color: #1b1919;
+            height: 60px;
+            overflow: hidden;
+        }
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .product-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .product-btn:hover {
+            background-color: #0056b3;
+        }
+
+   /* navbar  Section*/
+    .navbar{
+    background: #131313;
+    height:80px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.navbar_container{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin:0 auto;
+    padding:0 50px;
+}
+
+#navbar_logo{
+    background-color: #ff8177;
+    background-image:linear-gradient(to top,#ff0844 0%,#ffb199 100%);
+    background-size: 100%;
+    -webkit-background-clip:text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color:transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.fa-gem{
+    margin-right:0.5rem;
+}
+
+.navbar_menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+
+.navbar_item{
+    height: 80px;
+}
+
+.navbar_links{
+    color: #fff;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+.navbar_btn{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding:10px  20px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background:#f77062;
+    color: #fff;
+}
+
+.button:hover{
+    background: #4837ff;
+    transition: all 0.3s ease;
+}
+
+.navbar_links:hover{
+    color:#f77062;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width:960px){
+    .navbar_container{
+        display:flex;
+        justify-content:space-between ;
+        height: 80px;
+        z-index:1;
+        width: 100%;
+        max-width: 1300px;
+        padding: 0;
+    }
+    .navbar_menu{
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top:-1000px;
+        opacity:0;
+        transition: all 0.5s ease;
+        height: 50vh;
+        z-index: -1;
+        background-color: #131313;
+    }
+    
+    .navbar_menu.active{
+        background: #131313;
+        top:100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 50vh;
+        font-size: 1.6rem;
+    }
+
+    #navbar_log{
+        padding-left:25px;
+    }
+
+    .navbar_toggle.bar{
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #fff;
+    }
+
+    .navbar_item{
+        width: 100%;
+    }
+
+    .navbar_links{
+        text-align: center;
+        padding: 2rem;
+        width:100%;
+        display: table;
+    }
+
+    #mobile-menu{
+        position:absolute;
+        top:20%;
+        right:5%;
+        transform: translate(5%,20%);
+    }
+
+    .navbar_btn{
+        padding-bottom: 2rem;
+    }
+
+    .button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80px;
+        margin: 0;
+    }
+
+    .navbar_toggle.bar{
+        display: block;
+        cursor:pointer;
+    }
+}
+    </style>
+</head>
+<body>
+
+
+<!--Navbar Section-->
+<nav class="navbar">
+    <div class="navbar_container">
+      <a href="/" id="navbar_logo">
+        <i class="bi bi-gem"></i> NEXT</a>
+      <div class="navbar_toggle" id="mobile-menu">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</div>
+<ul class="navbar_menu">
+    <li class="navbar_item">
+        <a href="/" class="navbar_links">Home</a>
+    </li>
+    <li class="navbar_item">
+        <a href="images/tech.html" class="navbar_links">Tech</a>
+    </li>
+    <li class="navbar_item">
+        <a href="/product.html" class="navbar_links">Products</a>
+    </li>
+    <li class="navbar_btn">
+        <a href="/Login.html" class="navbar_links"><button id="signUpButton" class="button">Login</button></a>
+    </li>
+</ul>
+</div>
+</nav>
+
+
+    <!-- Container for Technology Products -->
+    <div class="container py-5">
+        <h2 class="text-center mb-5">Technology Products</h2>
+        <div class="row">
+
+            <!-- Product Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <!-- Example image link for a laptop -->
+                    <img src="https://circuitbank.com/cdn/shop/products/4_1c3c4b71-0da0-4e68-b84e-e0b05a7af889_1024x1024.png?v=1610825425" alt="Laptop" class="card-img-top product-image">
+                    <div class="card-body">
+                        <h5 class="card-title product-title">Laptop XYZ 3000</h5>
+                        <p class="card-text product-description">
+                            A high-performance laptop with an Intel i7 processor, 16GB RAM, and 512GB SSD. Perfect for gaming and professional work.
+                        </p>
+                        <p class="product-price">$1,299</p>
+                        <button class="product-btn" onclick="showAlert('Laptop XYZ 3000')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <!-- Example image link for a smartphone -->
+                    <img src="https://harugroup.com.co/cdn/shop/files/iPhone16ProMaxDorado_800x.png?v=1729352799" alt="Smartphone" class="card-img-top product-image">
+                    <div class="card-body">
+                        <h5 class="card-title product-title">Smartphone iphone 16Pro Max</h5>
+                        <p class="card-text product-description">
+                            The latest 5G smartphone with an AMOLED display, 128GB storage, and an advanced camera setup.
+                        </p>
+                        <p class="product-price">$799</p>
+                        <button class="product-btn" onclick="showAlert('Smartphone ABC 12')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <!-- Example image link for a smartwatch -->     
+                    <img src="https://www.gonoise.com/cdn/shop/files/1_1_b18f77db-5fef-4698-9902-a48fec2b8efa.png?v=1704963291" alt="Smart Watch" class="card-img-top product-image">
+                    <div class="card-body">
+                        <h5 class="card-title product-title">Smart Watch Pro</h5>
+                        <p class="card-text product-description">
+                            Track your health and fitness with this advanced smart watch featuring heart rate monitoring and GPS.
+                        </p>
+                        <p class="product-price">$249</p>
+                        <button class="product-btn" onclick="showAlert('Smart Watch Pro')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap and jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript for Button Action -->
+    <script>
+        // Function to handle button click
+        function showAlert(productName) {
+            alert("You clicked on " + productName + "!");
+        }
+    </script>
+
+</body>
+</html>
